@@ -48,10 +48,11 @@
     button:hover {
       filter: brightness(0.95);
     }
-    button.play {
+    button.play, button.pause {
       font-weight: 600;
       padding-inline: 1.4rem;
       width: auto;
+      margin-left: 5px;
     }
     .top-row {
       display: flex;
@@ -80,7 +81,10 @@
           <source src="som1.mp3" type="audio/mpeg" />
         </audio>
         <button class="play" onclick="document.getElementById('som1').play()">
-          ▶️ Ouvir som
+          ▶️ Ouvir
+        </button>
+        <button class="pause" onclick="document.getElementById('som1').pause()">
+          ⏸️ Pausar
         </button>
       </div>
     </div>
@@ -90,64 +94,4 @@
     <button onclick="verificarResposta(1, false)">Sibilo</button>
     <button onclick="verificarResposta(1, false)">Ronco</button>
 
-    <div id="feedback-1" class="feedback"></div>
-  </div>
-
-  <!-- QUESTÃO 2 -->
-  <div class="card">
-    <div class="top-row">
-      <div class="card-title">Questão 2</div>
-      <div>
-        <audio id="som2">
-          <source src="som2.mp3" type="audio/mpeg" />
-        </audio>
-        <button class="play" onclick="document.getElementById('som2').play()">
-          ▶️ Ouvir som
-        </button>
-      </div>
-    </div>
-
-    <button onclick="verificarResposta(2, false)">Estertor fino</button>
-    <button onclick="verificarResposta(2, false)">Ronco</button>
-    <button onclick="verificarResposta(2, true)">Estridor</button>
-    <button onclick="verificarResposta(2, false)">Atrito pleural</button>
-
-    <div id="feedback-2" class="feedback"></div>
-  </div>
-
-  <!-- QUESTÃO 3 -->
-  <div class="card">
-    <div class="top-row">
-      <div class="card-title">Questão 3</div>
-      <div>
-        <audio id="som3">
-          <source src="som3.mp3" type="audio/mpeg" />
-        </audio>
-        <button class="play" onclick="document.getElementById('som3').play()">
-          ▶️ Ouvir som
-        </button>
-      </div>
-    </div>
-
-    <button onclick="verificarResposta(3, false)">Sibilo</button>
-    <button onclick="verificarResposta(3, false)">Estertor grosso</button>
-    <button onclick="verificarResposta(3, true)">Ronco</button>
-    <button onclick="verificarResposta(3, false)">Estridor</button>
-
-    <div id="feedback-3" class="feedback"></div>
-  </div>
-
-  <script>
-    function verificarResposta(questaoId, correta) {
-      const feedback = document.getElementById(`feedback-${questaoId}`);
-      if (correta) {
-        feedback.textContent = '✅ Acertou! Muito bem!';
-        feedback.style.color = 'green';
-      } else {
-        feedback.textContent = '❌ Não ainda! Tenta outra alternativa.';
-        feedback.style.color = 'crimson';
-      }
-    }
-  </script>
-</body>
-</html>
+    <div id="feedb
