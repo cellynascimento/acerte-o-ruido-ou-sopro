@@ -521,6 +521,19 @@
     <a href="https://instagram.com/medcelly" target="_blank">@medcelly</a> 💙<br>
     Lá eu compartilho <strong>materiais com resumos</strong> sobre diversos conteúdos da área da saúde.
   </div>
+  <script>
+    function verificarResposta(questaoId, correta) {
+      const feedback = document.getElementById('feedback-' + questaoId);
+      if (!feedback) return;
 
+      if (correta) {
+        feedback.textContent = '✅ Acertou! Muito bem!';
+        feedback.style.color = 'green';
+      } else {
+        feedback.textContent = '❌ Não ainda! Tenta outra alternativa.';
+        feedback.style.color = 'crimson';
+      }
+    }
+  </script>
 </body>
 </html>
