@@ -2,56 +2,66 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Acerte o som</title>
+  <title>Acerte o som 🔊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       padding: 1.5rem;
       line-height: 1.5;
-      text-align: center;
     }
     h1 {
-      font-size: 1.6rem;
-      margin-bottom: 0.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 0.2rem;
+    }
+    h2 {
+      font-size: 1rem;
+      margin-top: 0.2rem;
+      text-align: center;
+      font-weight: 400;
+      color: #555;
     }
     .card {
       border: 1px solid #ddd;
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.3rem;
       margin-top: 1rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
     button {
       border: none;
       padding: 0.7rem 1rem;
-      margin: 0.4rem;
+      margin: 0.4rem 0;
       border-radius: 999px;
       font-size: 0.95rem;
       cursor: pointer;
       background: #f2f2f2;
+      width: 100%;
     }
     button:hover {
       filter: brightness(0.95);
     }
     button.play {
       font-weight: 600;
-      margin-bottom: 1rem;
       padding-inline: 1.4rem;
+      width: auto;
     }
-    .options {
-      margin-top: 0.8rem;
+    .top-row {
       display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .options button {
-      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
     .feedback {
-      margin-top: 1rem;
+      margin-top: 0.6rem;
       font-weight: 600;
       min-height: 1.4em;
     }
@@ -59,38 +69,82 @@
 </head>
 <body>
   <h1>Acerte o som 🔊</h1>
-  <p>Clique em “Ouvir” e escolha a alternativa correta.</p>
+  <h2>Clique em “Ouvir” e marque a opção correta</h2>
 
+  <!-- QUESTÃO 1 -->
   <div class="card">
-    <!-- Áudio: certifique-se que o arquivo som1.mp3 está no mesmo repositório -->
-    <audio id="som1">
-      <source src="som1.mp3" type="audio/mpeg" />
-      Seu navegador não suporta o elemento de áudio.
-    </audio>
-
-    <button class="play" onclick="document.getElementById('som1').play()">
-      ▶️ Ouvir som
-    </button>
-
-    <div class="options">
-      <!-- Ajuste as alternativas aqui -->
-      <button onclick="verificarResposta(false)">Estenose aórtica</button>
-      <button onclick="verificarResposta(true)">Insuficiência mitral</button>
-      <button onclick="verificarResposta(false)">Estenose mitral</button>
-      <button onclick="verificarResposta(false)">Insuficiência aórtica</button>
+    <div class="top-row">
+      <div class="card-title">Questão 1</div>
+      <div>
+        <audio id="som1">
+          <source src="som1.mp3" type="audio/mpeg" />
+        </audio>
+        <button class="play" onclick="document.getElementById('som1').play()">
+          ▶️ Ouvir som
+        </button>
+      </div>
     </div>
 
-    <div id="feedback" class="feedback"></div>
+    <button onclick="verificarResposta(1, false)">Estenose aórtica</button>
+    <button onclick="verificarResposta(1, true)">Insuficiência mitral</button>
+    <button onclick="verificarResposta(1, false)">Estenose mitral</button>
+    <button onclick="verificarResposta(1, false)">Insuficiência aórtica</button>
+
+    <div id="feedback-1" class="feedback"></div>
+  </div>
+
+  <!-- QUESTÃO 2 -->
+  <div class="card">
+    <div class="top-row">
+      <div class="card-title">Questão 2</div>
+      <div>
+        <audio id="som2">
+          <source src="som2.mp3" type="audio/mpeg" />
+        </audio>
+        <button class="play" onclick="document.getElementById('som2').play()">
+          ▶️ Ouvir som
+        </button>
+      </div>
+    </div>
+
+    <button onclick="verificarResposta(2, false)">Estertor fino</button>
+    <button onclick="verificarResposta(2, false)">Ronco</button>
+    <button onclick="verificarResposta(2, true)">Sibilo</button>
+    <button onclick="verificarResposta(2, false)">Atrito pleural</button>
+
+    <div id="feedback-2" class="feedback"></div>
+  </div>
+
+  <!-- QUESTÃO 3 -->
+  <div class="card">
+    <div class="top-row">
+      <div class="card-title">Questão 3</div>
+      <div>
+        <audio id="som3">
+          <source src="som3.mp3" type="audio/mpeg" />
+        </audio>
+        <button class="play" onclick="document.getElementById('som3').play()">
+          ▶️ Ouvir som
+        </button>
+      </div>
+    </div>
+
+    <button onclick="verificarResposta(3, false)">Insuficiência tricúspide</button>
+    <button onclick="verificarResposta(3, false)">Insuficiência mitral</button>
+    <button onclick="verificarResposta(3, true)">Estenose mitral</button>
+    <button onclick="verificarResposta(3, false)">Estenose pulmonar</button>
+
+    <div id="feedback-3" class="feedback"></div>
   </div>
 
   <script>
-    function verificarResposta(correta) {
-      const feedback = document.getElementById('feedback');
+    function verificarResposta(questaoId, correta) {
+      const feedback = document.getElementById(`feedback-${questaoId}`);
       if (correta) {
-        feedback.textContent = '✅ Acertou! Boa!';
+        feedback.textContent = '✅ Acertou! Muito bem!';
         feedback.style.color = 'green';
       } else {
-        feedback.textContent = '❌ Ainda não! Tente outra alternativa.';
+        feedback.textContent = '❌ Não ainda! Tenta outra alternativa.';
         feedback.style.color = 'crimson';
       }
     }
