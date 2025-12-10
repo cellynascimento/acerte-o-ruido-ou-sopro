@@ -85,10 +85,10 @@
       </div>
     </div>
 
-    <button onclick="verificarResposta(1, false)">Estenose aórtica</button>
-    <button onclick="verificarResposta(1, true)">Insuficiência mitral</button>
-    <button onclick="verificarResposta(1, false)">Estenose mitral</button>
-    <button onclick="verificarResposta(1, false)">Insuficiência aórtica</button>
+    <button onclick="verificarResposta(1, false)">Estertor fino</button>
+    <button onclick="verificarResposta(1, true)">Atrito pleural</button>
+    <button onclick="verificarResposta(1, false)">Sibilo</button>
+    <button onclick="verificarResposta(1, false)">Ronco</button>
 
     <div id="feedback-1" class="feedback"></div>
   </div>
@@ -109,7 +109,7 @@
 
     <button onclick="verificarResposta(2, false)">Estertor fino</button>
     <button onclick="verificarResposta(2, false)">Ronco</button>
-    <button onclick="verificarResposta(2, true)">Sibilo</button>
+    <button onclick="verificarResposta(2, true)">Estridor</button>
     <button onclick="verificarResposta(2, false)">Atrito pleural</button>
 
     <div id="feedback-2" class="feedback"></div>
@@ -129,10 +129,10 @@
       </div>
     </div>
 
-    <button onclick="verificarResposta(3, false)">Insuficiência tricúspide</button>
-    <button onclick="verificarResposta(3, false)">Insuficiência mitral</button>
-    <button onclick="verificarResposta(3, true)">Estenose mitral</button>
-    <button onclick="verificarResposta(3, false)">Estenose pulmonar</button>
+    <button onclick="verificarResposta(3, false)">Sibilo</button>
+    <button onclick="verificarResposta(3, false)">Estertor grosso</button>
+    <button onclick="verificarResposta(3, true)">Ronco</button>
+    <button onclick="verificarResposta(3, false)">Estridor</button>
 
     <div id="feedback-3" class="feedback"></div>
   </div>
