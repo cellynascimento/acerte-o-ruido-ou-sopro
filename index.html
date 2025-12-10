@@ -510,50 +510,7 @@
     <div id="feedback-19" class="feedback"></div>
   </div>
 
-  <script>
-    function verificarResposta(questaoId, correta) {
-      const feedback = document.getElementById(`feedback-${questaoId}`);
-      if (correta) {
-        feedback.textContent = '✅ Acertou! Muito bem!';
-        feedback.style.color = 'green';
-      } else {
-        feedback.textContent = '❌ Não ainda! Tenta outra alternativa.';
-        feedback.style.color = 'crimson';
-      }
-    }
-  </script>
- <script>
-  // anima o número (efeito "pulinho")
-  function animarNumero() {
-    const el = document.getElementById("contador-visitas");
-    el.classList.add("animar");
-    setTimeout(() => el.classList.remove("animar"), 300);
-  }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const contadorSpan = document.getElementById("contador-visitas");
-    if (!contadorSpan) return;
-
-    // usa localStorage para contar acessos neste dispositivo
-    let total = Number(localStorage.getItem("medcelly_osce_ausculta") || "0");
-    total += 1;
-    localStorage.setItem("medcelly_osce_ausculta", total);
-
-    // animação de 0 até o total
-    let atual = 0;
-    const incremento = Math.max(1, Math.ceil(total / 50));
-
-    const intervalo = setInterval(() => {
-      atual += incremento;
-      if (atual >= total) {
-        atual = total;
-        clearInterval(intervalo);
-      }
-      contadorSpan.textContent = atual;
-      animarNumero();
-    }, 20);
-  });
-</script>
 
 
     <div class="credits">
