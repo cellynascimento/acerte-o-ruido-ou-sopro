@@ -84,6 +84,40 @@
     .credits a:hover {
       text-decoration: underline;
     }
+    .contador-container {
+      margin-top: 2rem;
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      background: #f7f7f7;
+      text-align: center;
+      border: 1px solid #e0e0e0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .contador-numero {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1565c0;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .contador-numero.animar {
+      transform: scale(1.25);
+    }
+
+    .icone-esteto {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .contador-subtexto {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-top: 0.5rem;
+    }
 
   </style>
 </head>
@@ -488,6 +522,53 @@
       }
     }
   </script>
+    <script>
+    // Função para animar o número
+    function animarNumero() {
+      const el = document.getElementById("contador-visitas");
+      el.classList.add("animar");
+      setTimeout(() => el.classList.remove("animar"), 300);
+    }
+
+    // Contador global com COUNTAPI
+    document.addEventListener("DOMContentLoaded", function () {
+      const contadorSpan = document.getElementById("contador-visitas");
+
+      // URL da CountAPI com namespace e key
+      fetch("https://api.countapi.xyz/hit/medcelly/osce-ruidos-unicos")
+        .then(res => res.json())
+        .then(data => {
+          let total = data.value;
+
+          // Animação suave (contagem subindo)
+          let atual = 0;
+          let incremento = Math.ceil(total / 50);
+          let intervalo = setInterval(() => {
+            atual += incremento;
+            if (atual >= total) {
+              atual = total;
+              clearInterval(intervalo);
+            }
+            contadorSpan.textContent = atual;
+            animarNumero();
+          }, 20);
+        })
+        .catch(err => {
+          console.error("Erro no contador:", err);
+          contadorSpan.textContent = "—";
+        });
+    });
+  </script>
+
+  <div class="contador-container">
+    <div class="icone-esteto">🩺</div>
+    Já tivemos 
+    <span id="contador-visitas" class="contador-numero">0</span>
+    treinos de ausculta aqui 🩺
+    <div class="contador-subtexto">
+      Visitantes únicos registrados globalmente
+    </div>
+  </div>
 
     <div class="credits">
     Projeto desenvolvido por <strong>MedCelly</strong>, acadêmica de Medicina do 2º período
