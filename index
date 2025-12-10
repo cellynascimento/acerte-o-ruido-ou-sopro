@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Acerte o som</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    button {
+      border: none;
+      padding: 0.7rem 1rem;
+      margin: 0.4rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      background: #f2f2f2;
+    }
+    button:hover {
+      filter: brightness(0.95);
+    }
+    button.play {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      padding-inline: 1.4rem;
+    }
+    .options {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .options button {
+      width: 100%;
+    }
+    .feedback {
+      margin-top: 1rem;
+      font-weight: 600;
+      min-height: 1.4em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Acerte o som 🔊</h1>
+  <p>Clique em “Ouvir” e escolha a alternativa correta.</p>
+
+  <div class="card">
+    <!-- Áudio: certifique-se que o arquivo som1.mp3 está no mesmo repositório -->
+    <audio id="som1">
+      <source src="som1.mp3" type="audio/mpeg" />
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <button class="play" onclick="document.getElementById('som1').play()">
+      ▶️ Ouvir som
+    </button>
+
+    <div class="options">
+      <!-- Ajuste as alternativas aqui -->
+      <button onclick="verificarResposta(false)">Estenose aórtica</button>
+      <button onclick="verificarResposta(true)">Insuficiência mitral</button>
+      <button onclick="verificarResposta(false)">Estenose mitral</button>
+      <button onclick="verificarResposta(false)">Insuficiência aórtica</button>
+    </div>
+
+    <div id="feedback" class="feedback"></div>
+  </div>
+
+  <script>
+    function verificarResposta(correta) {
+      const feedback = document.getElementById('feedback');
+      if (correta) {
+        feedback.textContent = '✅ Acertou! Boa!';
+        feedback.style.color = 'green';
+      } else {
+        feedback.textContent = '❌ Ainda não! Tente outra alternativa.';
+        feedback.style.color = 'crimson';
+      }
+    }
+  </script>
+</body>
+</html>
